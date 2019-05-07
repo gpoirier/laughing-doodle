@@ -20,14 +20,18 @@ pipeline {
                 stage('Running tests #1') {
                     steps {
                         timestamps {
-                            sh "Running tests #1..."
+                            sh '''
+                              echo "Starting tests #1..."
+                              sleep 2
+                              echo "Ending tests #1..."
+                            '''
                         }
                     }
                 }
                 stage('Running tests #2') {
                     steps {
                         timestamps {
-                            sh "Running tests #2..."
+                            sh "echo Running tests #2..."
                         }
                     }
                 }
