@@ -24,7 +24,6 @@ pipeline {
                               echo "Starting tests #1..."
                               sleep 2
                               echo "Ending tests #1..."
-                              exit 1
                             '''
                         }
                     }
