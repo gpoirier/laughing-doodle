@@ -14,6 +14,7 @@ pipeline {
                     sh "echo Building..."
                 }
             }
+        }
         stage('Unit Tests') {
             parallel {
                 stage('Running tests #1') {
