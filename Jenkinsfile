@@ -1,39 +1,24 @@
 pipeline {
     agent { label 'kubernetes' }
     stages {
-        stage('Clean') {
+        stage('Test') {
             steps {
                 timestamps {
-                    sh "echo Cleaning..."
+                    echo "Testing..."
                 }
             }
         }
-        stage('Build') {
+        stage('Release') {
             steps {
                 timestamps {
-                    sh "echo Building..."
+                    echo "Releasing..."
                 }
             }
         }
-        stage('Unit Tests') {
-            parallel {
-                stage('Running tests #1') {
-                    steps {
-                        timestamps {
-                            sh '''
-                              echo "Starting tests #1..."
-                              sleep 2
-                              echo "Ending tests #1..."
-                            '''
-                        }
-                    }
-                }
-                stage('Running tests #2') {
-                    steps {
-                        timestamps {
-                            sh "echo Running tests #2..."
-                        }
-                    }
+        stage('Deploy') {
+            steps {
+                timestamps {
+                    echo "Deploying..."
                 }
             }
         }
