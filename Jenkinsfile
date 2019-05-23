@@ -12,7 +12,7 @@ pipeline {
             }
         }
         stage('Deploy') {
-            when { buildingTag() }
+            when { tag 'deploy-*' }
             steps {
                 echo 'Deploying only because this commit is tagged...'
                 echo 'make deploy'
