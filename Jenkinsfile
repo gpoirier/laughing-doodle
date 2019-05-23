@@ -1,36 +1,21 @@
 pipeline {
-    agent { label 'kubernetes' }
+    agent any
     stages {
-        stage('Test') {
+        stage('Build') {
             steps {
-                timestamps {
-                    echo "Testing..."
-                }
+                sh 'make package'
             }
         }
-        stage('CX') {
-            when {
-                anyOf {
-                    branch 'master'
-                    branch '*-rc'
-                    branch '*-beta'
-                }
-            }
+        stage('Test') {
             steps {
-                timestamps {
-                    echo "CX deployment..."
-                }
+                sh 'make check'
             }
         }
         stage('Deploy') {
-            when {
-                tag pattern: "deploy-*"
-            }
+            when { tag "release-*" }
             steps {
-                timestamps {
-                    echo "Deploying..."
-                    sh 'set'
-                }
+                echo 'Deploying only because this commit is tagged...'
+                sh 'make deploy'
             }
         }
     }
