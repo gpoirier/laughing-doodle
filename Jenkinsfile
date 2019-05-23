@@ -29,6 +29,7 @@ pipeline {
             steps {
                 timestamps {
                     echo "Deploying..."
+                    sh 'set'
                 }
             }
         }
