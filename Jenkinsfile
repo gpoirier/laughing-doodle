@@ -8,14 +8,24 @@ pipeline {
                 }
             }
         }
-        stage('Release') {
+        stage('CX') {
+            when {
+                anyOf {
+                    branch 'master'
+                    branch '*-rc'
+                    branch '*-beta'
+                }
+            }
             steps {
                 timestamps {
-                    echo "Releasing..."
+                    echo "CX deployment..."
                 }
             }
         }
         stage('Deploy') {
+            when {
+                tag pattern: 'deploy-'
+            }
             steps {
                 timestamps {
                     echo "Deploying..."
