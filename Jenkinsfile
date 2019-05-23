@@ -24,7 +24,7 @@ pipeline {
         }
         stage('Deploy') {
             when {
-                tag pattern: 'deploy-'
+                tag 'deploy-*'
             }
             steps {
                 timestamps {
