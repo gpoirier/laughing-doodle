@@ -24,6 +24,7 @@ pipeline {
         }
         stage('Deploy') {
             when {
+                buildingTag()
                 tag pattern: "deploy-*"
             }
             steps {
