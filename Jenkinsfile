@@ -1,8 +1,8 @@
 pipeline {
     agent any
     stages {
-        when { not { buildTag() } }
         stage('Build') {
+            when { not { buildTag() } }
             steps {
                 echo 'make package'
             }
