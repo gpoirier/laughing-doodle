@@ -1,12 +1,14 @@
 pipeline {
     agent any
     stages {
+        when { not { buildTag() } }
         stage('Build') {
             steps {
                 echo 'make package'
             }
         }
         stage('Test') {
+            when { not { buildTag() } }
             steps {
                 echo 'make check'
             }
