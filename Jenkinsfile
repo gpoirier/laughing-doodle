@@ -2,13 +2,13 @@ pipeline {
     agent any
     stages {
         stage('Build') {
-            when { not { buildTag() } }
+            when { not { buildingTag() } }
             steps {
                 echo 'make package'
             }
         }
         stage('Test') {
-            when { not { buildTag() } }
+            when { not { buildingTag() } }
             steps {
                 echo 'make check'
             }
